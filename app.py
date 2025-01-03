@@ -6,7 +6,7 @@ from resources.socket_helper import SocketHelper
 
 app = Flask(__name__)
 CORS(app,resources={r"/*":{"origins":"*"}})
-socketio = SocketIO(app,cors_allowed_origins="*", async_mode='gevent')
+socketio = SocketIO(app,cors_allowed_origins="*", async_mode='eventlet')
 
 
 
@@ -32,8 +32,4 @@ def handle_message(data):
 def disconnected():
     """event listener when client disconnects to the server"""
     SocketHelper.on_disconnect(request,socketio)
-
-
-
-
 
