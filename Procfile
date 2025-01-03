@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn -w 4 -k eventlet -b 0.0.0.0:3000 app:app  
